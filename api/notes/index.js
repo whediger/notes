@@ -6,9 +6,18 @@ var data = require('./data/data.js');
 
 //get all my notes
 app.get('/api/notes', function(req, res){
-  data.getAllNotes().then(function(notes){
-    res.end(notes);
-  });
+  if (req.query){
+    //search notes
+    // data.searchNotes(req.query).then(function(results){
+    //
+    // });
+    console.log(req.query);
+  } else {
+    //get all notes
+    data.getAllNotes().then(function(notes){
+      res.end(notes);
+    });
+  }
 });
 
 //create a new note
@@ -28,7 +37,6 @@ app.get('/api/notes/:id', function(req, res){
   res.end(req.params.id);
 });
 
-//search notes
 
 
 
