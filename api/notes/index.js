@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 var data = require('./data/data.js');
 
-//get all my notes
+
 app.get('/api/notes', function(req, res){
   if (req.query){
     //search notes
