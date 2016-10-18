@@ -14,10 +14,22 @@ app.get('/api/notes', function(req, res){
 //create a new note
 app.post('/api/notes', function(req, res){
   // data.saveNote(req.body.note).then(funciton(note){
-  //     res.end(req.body.note);
+  //     res.end(note);
   // });
   console.log(req.body.note);
 });
+
+//get an exisisting note
+app.get('/api/notes/:id', function(req, res){
+  // data.getNote(id).then(function(note){
+  //       res.end(note);
+  // })
+  console.log(req.params.id);
+  res.end(req.params.id);
+});
+
+//search notes
+
 
 
 //TODO remove server config from routes
