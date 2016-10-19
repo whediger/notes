@@ -19,7 +19,7 @@ module.exports = {
             results.push({ "id" : data[i].id, "note" : data[i].body });
           }
         }
-        results = JSON.stringify(results);
+        results = JSON.stringify(results, null, "\t");
         fulfill(results);
       });
     });
@@ -34,16 +34,14 @@ module.exports = {
           if (newId < data[i].id)
             newId = data[i].id + 1;
         }
-        //TODO search JSON and assign id to greatest value
         data.push({ "id" : newId, "body" : note })
-        data = JSON.stringify(data);
+        data = JSON.stringify(data, null, "\t");
         fs.writeFile('notes.json', data, function(error){
           if (error){
             console.error('write error: ' + error.message)
           }
-        })
+        });
         fulfill(data);
-
       });
     });
   },
@@ -54,7 +52,7 @@ module.exports = {
         data = JSON.parse(data);
         for (var i in data){
           if (data[i].id == id){
-            data = JSON.stringify(data[i]);
+            data = JSON.stringify(data[i], null, "\t");
             fulfill(data);
           }
         }
@@ -63,14 +61,22 @@ module.exports = {
     });
   },
 
-  deleteNote: function(id){
+  deleteNote: function(idIn){
     return new Promise(function(fulfill, reject){
       fs.readFile('notes.json', 'utf8', function(err, data){
         data = JSON.parse(data);
         for (var i in data){
-          if (data[i].id == id){
-            data.splice(id, 1);
-            data = JSON.stringify(data);
+          if (data[i].id == idIn){
+            data.splice(i, 1);
+            data = JSON.stringify(data, null, "\t");
+            fs.writeFile('notes.json', data, function(error){
+              if (error){
+                console.error('write error: ' + error.message)
+              }
+            });
+            fulfill(data);
+          } else {
+            data = JSON.stringify(data, null, "\t");
             fulfill(data);
           }
         }
@@ -79,6 +85,3 @@ module.exports = {
   }
 
 }
-
-
-//TODO save changes to file
