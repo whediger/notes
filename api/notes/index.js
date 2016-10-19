@@ -6,13 +6,12 @@ var data = require('./data/data.js');
 
 
 app.get('/api/notes', function(req, res){
-  if (req.query){
+  if (Object.keys(req.query).length != 0){
     //search notes
-    // data.searchNotes(req.query)
-    //   .then(function(results){
-    //     res.end(results);
-    //   });
-    console.log(req.query);
+    data.searchNotes(req.query.query)
+      .then(function(results){
+        res.end(results);
+      });
   } else {
     //get all notes
     data.getAllNotes().then(function(notes){
