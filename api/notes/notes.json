@@ -1,10 +1,1 @@
-[
-   {
-     "id" : 2,
-     "body" : "Pick up the milk!"
-   },
-   {
-     "id" : 1,
-     "body" : "Ask Larry about the TPS reports."
-   }
-]
+[{"id":2,"body":"Pick up milk!"},{"id":1,"body":"Ask Larry about the TPS reports."},{"id":3,"body":"here is a note"}]

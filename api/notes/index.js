@@ -44,9 +44,6 @@ app.get('/api/notes/delete/:id', function(req, res){
     });
 });
 
-
-
-
 //TODO remove server config from routes
 var server =  app.listen(3000, function(){
   var host = server.address().address;

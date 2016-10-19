@@ -29,10 +29,21 @@ module.exports = {
     return new Promise(function(fulfill, reject){
       fs.readFile('notes.json', 'utf8', function(err, data){
         data = JSON.parse(data);
+        var newId = 0;
+        for (var i in data){
+          if (newId < data[i].id)
+            newId = data[i].id + 1;
+        }
         //TODO search JSON and assign id to greatest value
-        data.push({ "id" : (data.length + 1), "body" : note })
+        data.push({ "id" : newId, "body" : note })
         data = JSON.stringify(data);
+        fs.writeFile('notes.json', data, function(error){
+          if (error){
+            console.error('write error: ' + error.message)
+          }
+        })
         fulfill(data);
+
       });
     });
   },
@@ -69,5 +80,5 @@ module.exports = {
 
 }
 
-//TODO fix id sequence on save, add, delete
+
 //TODO save changes to file
