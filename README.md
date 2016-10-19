@@ -10,5 +10,5 @@
 5. run **_nodemon_**
   * if you are not logged in as a su run **_sudo nodemon_**
   
->you should be ready to run curl commands to test the app
->if you are not logged in as a su run **_sudo curl_** commands
+>you should be ready to run curl commands to test the app.
+> If you are not logged in as a su run **_sudo curl_** commands
