@@ -17,7 +17,7 @@ module.exports = {
         var results =[];
         for (var i in data){
           if(data[i].body.indexOf(query) > -1){
-            results.push({ "id" : data[i].body });
+            results.push({ "id" : data[i].id, "note" : data[i].body });
           }
         }
         results = JSON.stringify(results);
