@@ -9,8 +9,7 @@ module.exports = {
     });
   },
 
-  searchNotes: function(query) {
-
+  searchNotes: function(query){
     return new Promise(function(fulfill, reject){
       fs.readFile('notes.json', 'utf8', function(err, data){
         data = JSON.parse(data);
@@ -24,6 +23,36 @@ module.exports = {
         fulfill(results);
       });
     });
+  },
+
+  saveNote: function(note){
+    return new Promise(function(fulfill, reject){
+      fs.readFile('notes.json', 'utf8', function(err, data){
+        data = JSON.parse(data);
+        //TODO search JSON and assign id to greatest value
+        data.push({ "id" : (data.length + 1), "body" : note })
+        data = JSON.stringify(data);
+        fulfill(data);
+      });
+    });
+  },
+
+  getNote: function(id) {
+    return new Promise(function(fulfill, reject){
+      fs.readFile('notes.json', 'utf8', function(err, data){
+        data = JSON.parse(data);
+        for (var i in data) {
+          if (data[i].id == id){
+            data = JSON.stringify(data[i])
+            fulfill(data)
+          }
+        }
+        fulfill(-1);
+      });
+    });
   }
 
 }
+
+//TODO fix id sequence on save, add, delete
+//TODO save changes to file

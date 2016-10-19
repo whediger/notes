@@ -22,21 +22,18 @@ app.get('/api/notes', function(req, res){
 
 //create a new note
 app.post('/api/notes', function(req, res){
-  // data.saveNote(req.body.note)
-    // .then(funciton(note){
-    //   res.end(note);
-    // });
-  console.log(req.body.note);
+  data.saveNote(req.body.body)
+    .then(function(notes){
+      res.end(notes);
+    });
 });
 
 //get an exisisting note
 app.get('/api/notes/:id', function(req, res){
-  // data.getNote(id)
-  //   .then(function(note){
-  //       res.end(note);
-  //   });
-  console.log(req.params.id);
-  res.end(req.params.id);
+  data.getNote(req.params.id)
+    .then(function(note){
+        res.end(note);
+    });
 });
 
 //delete an exisiting note: to be restful design
@@ -45,7 +42,6 @@ app.get('/api/notes/delete/:id', function(req, res){
   //   .then(function(notes){
   //     res.end(notes);
   //   });
-  console.log(req.params.id);
 });
 
 
