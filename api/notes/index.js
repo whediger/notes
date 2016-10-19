@@ -38,10 +38,10 @@ app.get('/api/notes/:id', function(req, res){
 
 //delete an exisiting note: to be restful design
 app.get('/api/notes/delete/:id', function(req, res){
-  // data.deleteNote(req.params.id)
-  //   .then(function(notes){
-  //     res.end(notes);
-  //   });
+  data.deleteNote(req.params.id)
+    .then(function(notes){
+      res.end(notes);
+    });
 });
 
 

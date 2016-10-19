@@ -41,13 +41,28 @@ module.exports = {
     return new Promise(function(fulfill, reject){
       fs.readFile('notes.json', 'utf8', function(err, data){
         data = JSON.parse(data);
-        for (var i in data) {
+        for (var i in data){
           if (data[i].id == id){
-            data = JSON.stringify(data[i])
-            fulfill(data)
+            data = JSON.stringify(data[i]);
+            fulfill(data);
           }
         }
         fulfill(-1);
+      });
+    });
+  },
+
+  deleteNote: function(id){
+    return new Promise(function(fulfill, reject){
+      fs.readFile('notes.json', 'utf8', function(err, data){
+        data = JSON.parse(data);
+        for (var i in data){
+          if (data[i].id == id){
+            data.splice(id, 1);
+            data = JSON.stringify(data);
+            fulfill(data);
+          }
+        }
       });
     });
   }
