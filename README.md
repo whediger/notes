@@ -1,7 +1,14 @@
-#Notes api
+# Notes
 
 ## installation instructions
 
-1- clone repository
-2- run npm install
-3- execute _nodemon_ in same directory as index.js
+1. clone repository into your local directory
+2. navigate into **notes** directory
+3. run **_npm install_**
+4. be sure you are logged in as a super user(su)
+  * app runs on port 80 
+5. run **_nodemon_**
+  * if you are not logged in as a su run **_sudo nodemon_**
+  
+>you should be ready to run curl commands to test the app
+>if you are not logged in as a su run **_sudo curl_** commands
