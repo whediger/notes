@@ -1,11 +1,7 @@
 #Notes api
 
-## clone repo
+## installation instructions
 
-## run npm install
-
-## make sure you run nodemon in the root directory - reword
-
-
-### TODO
-- remove server config from routes
+1- clone repository
+2- run npm install
+3- execute _nodemon_ in same directory as index.js
