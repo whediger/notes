@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 var data = require('./data/data.js');
 
 
@@ -44,7 +45,7 @@ app.get('/api/notes/delete/:id', function(req, res){
     });
 });
 
-var server =  app.listen(3000, function(){
+var server =  app.listen(80, function(){
   var host = server.address().address;
   var port = server.address().port;
 });

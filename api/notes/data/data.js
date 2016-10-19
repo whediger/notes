@@ -31,17 +31,19 @@ module.exports = {
         data = JSON.parse(data);
         var newId = 0;
         for (var i in data){
-          if (newId < data[i].id)
+          if (newId <= data[i].id)
             newId = data[i].id + 1;
         }
-        data.push({ "id" : newId, "body" : note })
+        data.unshift({ "id" : newId, "body" : note })
+        var newData = { "id" : newId, "body" : note };
         data = JSON.stringify(data, null, "\t");
         fs.writeFile('notes.json', data, function(error){
           if (error){
             console.error('write error: ' + error.message)
           }
         });
-        fulfill(data);
+        newData = JSON.stringify(newData, null, "\t");
+        fulfill(newData);
       });
     });
   },
